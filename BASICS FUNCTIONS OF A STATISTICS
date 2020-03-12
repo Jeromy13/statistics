@@ -1,0 +1,94 @@
+#To read a csv file
+data=read.csv("D:/cricket_dataset.csv")
+
+#Mean
+mean = mean(data$Matches)
+cat("The mean value of Matches is ",mean)
+
+#Median
+median = median(data$Matches)
+cat("The median value of Matches is ",median)
+
+#Mode
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+mode = getmode(data$Matches)
+cat("The Mode value of Matches is ",mode)
+
+#Standard Deviation
+standard_deviation = sd(data$Matches)
+cat("The standard deviation value of Matches is ",standard_deviation)
+
+#Variance
+variance = var(data$Matches)
+cat("The variance value of Matches is ",variance)
+
+#skewness
+numerator = 3*(mean-median)
+value = numerator/standard_deviation
+cat("The skewness value is ",value)
+
+#Mean Deviation
+mean = mean(data$Matches)  
+column = data$Matches - mean
+mean_dev = mean(column)
+cat("The mean deviation value of Matches is ",mean_dev)
+
+#Geometric Mean:
+geo_mean <- function(data) {
+    log_data <- log(data)
+    gm <- exp(mean(log_data[is.finite(log_data)]))
+    return(gm)
+}
+geometric_mean = geo_mean(data$Matches)
+cat("The Geometric Mean value of Matches is ",geometric_mean)
+
+#Range
+range_value = range(data$Matches)	
+cat("The Range value of Matches is ",range_value)
+
+#nth Percentile
+Matches = data$Matches 
+percentile = quantile(Matches, c(.32, .57, .98))
+cat("The percentile value of Matches is ",percentile)
+
+#First and Second Quartile
+first = quantile(data$Matches,0.25)
+second = quantile(data$Matches,0.5)
+cat("The First and Second Quartile values are ",first,second)
+
+#Quartile Deviation
+first = quantile(data$Matches,0.25)
+third = quantile(data$Matches,0.75)
+Quartile_Deviation= (third-first)/2
+cat("The Quartile Deviation value of Matches is ",Quartile_Deviation)
+
+#Any two deciles
+first = quantile(data$Matches,0.1)
+second = quantile(data$Matches,0.2)
+cat("The two deciles value of Matches is ",first,second)
+
+#sum of column values
+sum = sum(data$Matches)
+cat("The sum of values of Matches column is ",sum)
+
+#Minimum of column values
+Minimum = min(data$Matches)
+cat("The Minimum values of Matches column is ",Minimum)
+
+#Maximum of column values
+Maximum = max(data$Matches)
+cat("The Maximum values of Matches column is ",Maximum)
+
+#Harmonic Mean
+col = data$Matches
+sum=0
+for(i in col){
+val = (1/i)
+sum = sum + val
+}
+numerator = length(data$Matches)
+harmonic_mean =  (numerator/sum)
+cat("The harmonic mean is ",harmonic_mean)
